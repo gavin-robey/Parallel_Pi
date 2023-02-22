@@ -1,0 +1,27 @@
+# Gradle build directories
+.gradle/
+build/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse files
+.classpath
+.project
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+
+# Logs
+*.log
+
+# Other
+*.DS_Store
+Thumbs.db
+

@@ -60,16 +60,10 @@ public class ResultTable<K, V> {
         return map.isEmpty();
     }
 
-    /*
-     * Clears the map
-     */
-    public synchronized void clear() {
-        map.clear();
-    }
-
     @Override
-    public synchronized String toString(){
+    public String toString(){
         StringBuilder sb = new StringBuilder();
+        sb.append(System.getProperty("line.separator"));
         sb.append("3.");
         for (K key : map.keySet()) {
             sb.append(map.get(key));

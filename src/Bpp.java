@@ -13,7 +13,7 @@ public class Bpp {
 	 * @param n - nth number of pi to return
 	 * @return returns an integer value containing 8 digits after n
 	 */
-	public synchronized int getDecimal(long n) {
+	public int getDecimal(long n) {
 		long av, a, vmax, N, num, den, k, kq, kq2, t, v, s, i;
 		double sum;
 
@@ -78,14 +78,14 @@ public class Bpp {
 			s = mulMod(s, t, av);
 			sum = (sum + (double) s / (double) av) % 1;
 		}
-		return (int) (sum * 1e9); // 1e9 is 9 decimal places
+		return (int) (sum * 1e1); // 1e9 is 9 decimal places
 	}
 
-	private synchronized long mulMod(long a, long b, long m) {
+	private long mulMod(long a, long b, long m) {
 		return (long) (a * b) % m;
 	}
 
-	private synchronized long modInverse(long a, long n) {
+	private long modInverse(long a, long n) {
 		long i = n, v = 0, d = 1;
 		while (a > 0) {
 			long t = i / a, x = a;
@@ -101,7 +101,7 @@ public class Bpp {
 		return v;
 	}
 
-	private synchronized long powMod(long a, long b, long m) {
+	private long powMod(long a, long b, long m) {
 		long tempo;
 		if (b == 0)
 			tempo = 1;
@@ -118,7 +118,7 @@ public class Bpp {
 		return tempo;
 	}
 
-	private synchronized boolean isPrime(long n) {
+	private boolean isPrime(long n) {
 		if (n == 2 || n == 3)
 			return true;
 		if (n % 2 == 0 || n % 3 == 0 || n < 2)
@@ -135,7 +135,7 @@ public class Bpp {
 		return true;
 	}
 
-	private synchronized long nextPrime(long n) {
+	private long nextPrime(long n) {
 		if (n < 2)
 			return 2;
 		if (n == 9223372036854775783L) {

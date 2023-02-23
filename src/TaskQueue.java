@@ -27,15 +27,6 @@ public class TaskQueue<T> {
     }
 
     /**
-     * Does not remove the first element of the linked list
-     * Instead returns the value of the first element of the linked list
-     * @return T 
-     */
-    public synchronized T peek() {
-        return list.getFirst();
-    }
-
-    /**
      * Checks whether the linked list is empty
      * @return Boolean
      */
@@ -49,21 +40,5 @@ public class TaskQueue<T> {
      */
     public synchronized int size() {
         return list.size();
-    }
-
-    @Override
-    public synchronized String toString(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (T task : list) {
-            sb.append(task.toString());
-            sb.append(", ");
-        }
-        // Remove the trailing comma and space
-        if (!list.isEmpty()) {
-            sb.setLength(sb.length() - 2);
-        }
-        sb.append("]");
-        return sb.toString();
     }
 }

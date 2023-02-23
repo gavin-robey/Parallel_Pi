@@ -11,6 +11,9 @@ public class WorkerThread extends Thread{
         this.bpp = new Bpp();
     }
 
+    /**
+     * 
+     */
     public void run() {
         try {
             while(!task.isEmpty()){

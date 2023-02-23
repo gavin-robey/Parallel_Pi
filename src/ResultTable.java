@@ -66,5 +66,15 @@ public class ResultTable<K, V> {
     public synchronized void clear() {
         map.clear();
     }
+
+    @Override
+    public synchronized String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("3.");
+        for (K key : map.keySet()) {
+            sb.append(map.get(key));
+        }
+        return sb.toString();
+    }
 }
 

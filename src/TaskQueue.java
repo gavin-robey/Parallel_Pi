@@ -52,7 +52,7 @@ public class TaskQueue<T> {
     }
 
     @Override
-    public String toString(){
+    public synchronized String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (T task : list) {

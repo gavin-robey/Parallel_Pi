@@ -1,23 +1,42 @@
 import java.util.ArrayList;
 
 public class Assign3{
-    private static ArrayList<Integer> digits = new ArrayList<>();
-    private static TaskQueue<Integer> tasks = new TaskQueue<>();
-    public static void main(String[] args) {
-        populateQueue();
-
-        // TODO: Calculate how many CPU cores there are
-        // TODO: Create as many worker threads as there are CPU cores 
-        // TODO: 
-
-
+    public synchronized static void main(String[] args) {
+        ArrayList<Integer> digits = new ArrayList<>();
+        TaskQueue<Integer> tasks = new TaskQueue<>();
+        ResultTable<Integer, Integer> results = new ResultTable<>();
+        populateQueue(digits, tasks);
+        
+        long startTime = System.nanoTime(); // Get the start time in nanoseconds
+        
+        try {
+            execute(tasks, results, 8);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        long endTime = System.nanoTime(); // Get the end time in nanoseconds
+        long duration = (endTime - startTime) / 1000000; // Convert to milliseconds
+        
+        System.out.println("Time taken: " + duration + "ms");
     }
 
-    public static void populateQueue(){
-        for(int i = 1; i <= 1000; i++){
+    public static void execute(TaskQueue<Integer> tasks, ResultTable<Integer, Integer> results, int cores) throws InterruptedException{
+        Worker[] threads = new Worker[cores];
+        for(int i = 0; i < threads.length; i++){
+            threads[i] = new Worker(tasks, results);
+            threads[i].start();
+        }
+        for (Worker thread : threads) {
+            thread.join();
+        }
+        System.out.println(results.toString());
+    }
+
+    public synchronized static void populateQueue(ArrayList<Integer> digits, TaskQueue<Integer> tasks){
+        for(int i = 1; i <= 500; i++){
             digits.add(i);
         }
-
         java.util.Collections.shuffle(digits);
 
         for(Integer digit: digits){

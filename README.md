@@ -1,4 +1,9 @@
-# Parallel Pi Build instructions
+# Parallel Pi 
+
+## Project Information
+This program computes the first 1000 digits of pi using the Bailey-Borwein-Plouffe Formula. The computational power needed to compute each digit is then split into seperate threads running on each core of the machine using this program. Each digit to be computed is pulled from a FIFO queue, then once complete, the computed digit of pi is placed into a hash map.
+
+## Build Instructions
 
 
 1. Build file by running the following command:

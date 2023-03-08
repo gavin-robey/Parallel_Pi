@@ -7,12 +7,12 @@ This program computes the first 1000 digits of pi using the Bailey-Borwein-Plouf
 
 
 1. Build file by running the following command:
-```
-$ gradle build
+```commandline
+gradle build
 ```
 2. Then run the program using: 
-```
-$ java -jar build/libs/*.jar
+```commandline
+java -jar build/libs/*.jar
 ```
 
 ## Expected output: 
